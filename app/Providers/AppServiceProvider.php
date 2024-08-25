@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use app\View\Components\AppWelcomeLayout;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +19,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {       
-        Blade::component('app-welcome-layout', \App\View\Components\AppWelcomeLayout::class);
     }
 }
