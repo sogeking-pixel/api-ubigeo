@@ -21,7 +21,7 @@
                         {{ __('Inicio') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('docs')" :active="request()->routeIs('docs')">
                         {{ __('Documentacion') }}
                     </x-nav-link>
 
@@ -92,7 +92,7 @@
             <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('docs')" :active="request()->routeIs('docs')">
                 {{ __('Documentacion') }}
             </x-responsive-nav-link>
             @Auth
