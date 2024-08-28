@@ -21,7 +21,7 @@ class DistritoController extends Controller
             
             $departamento = DepartamentoModel::where('nombre', $departamento_name)->firstOrFail();
             $provincia = ProvinciaModel::where('nombre', $provincia_name)->firstOrFail();
-            $provinciaExiste = $departamento->provincias()->where('name', $provincia->name)->exists();
+            $provinciaExiste = $departamento->provincias()->where('nombre', $provincia->nombre)->exists();
             
             if(!$provinciaExiste){
                 throw new \Exception('No existe esa provincia en ' . $departamento->nombre);
@@ -47,7 +47,7 @@ class DistritoController extends Controller
             $departamento = DepartamentoModel::where('nombre', $departamento_name)->firstOrFail();
             $provincia = ProvinciaModel::where('nombre', $provincia_name)->firstOrFail();
             
-            $provinciaExiste = $departamento->provincias()->where('name', $provincia->name)->exists();            
+            $provinciaExiste = $departamento->provincias()->where('nombre', $provincia->nombre)->exists();            
             if(!$provinciaExiste){
                 throw new \Exception('No existe esa provincia en ' . $departamento->nombre);
             }

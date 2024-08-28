@@ -13,7 +13,7 @@ class provinciaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(DepartamentoModel $departamento_name): JsonResponse
+    public function index(string $departamento_name): JsonResponse
     {
         try {
             $departamento = DepartamentoModel::where('nombre', $departamento_name)->firstOrFail();
