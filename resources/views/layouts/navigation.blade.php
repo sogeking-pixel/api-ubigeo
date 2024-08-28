@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -21,7 +21,7 @@
                         {{ __('Inicio') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('docs')" :active="request()->routeIs('docs')">
+                    <x-nav-link :href="route('docs.index')" :active="request()->routeIs('docs.index')">
                         {{ __('Documentacion') }}
                     </x-nav-link>
 
@@ -92,7 +92,7 @@
             <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('docs')" :active="request()->routeIs('docs')">
+            <x-responsive-nav-link :href="route('docs.index')" :active="request()->routeIs('docs.index')">
                 {{ __('Documentacion') }}
             </x-responsive-nav-link>
             @Auth

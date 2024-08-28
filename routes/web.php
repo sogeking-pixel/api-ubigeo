@@ -8,8 +8,21 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/docs', function () {
-    return view('docs');
-})->name('docs');
+    return view('view-docs.index');
+})->name('docs.index');
+
+Route::get('/docs/consulta-departamento', function () {
+    return view('view-docs.departamento');
+})->name('docs.departamento');
+
+Route::get('/docs/consulta-provincia', function () {
+    return view('view-docs.provincia');
+})->name('docs.provincia');
+
+Route::get('/docs/consulta-distrito', function () {
+    return view('view-docs.distrito');
+})->name('docs.distrito');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
