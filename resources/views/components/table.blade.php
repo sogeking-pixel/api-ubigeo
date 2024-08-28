@@ -1,5 +1,5 @@
 <!-- resources/views/components/table.blade.php -->
-<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+<div class="bg-white shadow sm:rounded-lg overflow-auto">
   <table class="min-w-full divide-y divide-gray-200">
     <thead class="bg-gray-50">
       <tr>

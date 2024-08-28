@@ -6,7 +6,10 @@
         Este es el endpoint para Departamentos, donde devolvera todos los departamentos: <br>
         <div class="my-4">
             <x-code-element class="text-green-600 text-lg">GET</x-code-element>
-            <x-code-element class="text-gray-500 text-lg">{{route('departamentos.index')}}</x-code-element>
+            <div class="overflow-auto">
+                <x-code-element class="text-gray-500 text-lg">{{route('departamentos.index')}}</x-code-element>
+            </div>
+            
         </div>
         
         <x-sub2title>Headers</x-sub2title>
@@ -83,7 +86,10 @@
         con el nombre del departamento del cual se requiera obtener algunas informacion extra: <br>
         <div class="my-4">
             <x-code-element class="text-green-600 text-lg">GET</x-code-element>
-            <x-code-element class="text-gray-500 text-lg">{{route('departamentos.index')}}/<span class="text-red-500">{departamento}</span></x-code-element>
+            <div class="overflow-auto">
+                <x-code-element class="text-gray-500 text-lg">{{route('departamentos.index')}}/<span class="text-red-500">{departamento}</span></x-code-element>
+            </div>
+            
         </div>
         
         <x-sub2title>Headers</x-sub2title>
