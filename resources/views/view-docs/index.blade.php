@@ -84,6 +84,7 @@
         <pre class="text-base w-full bg-white px-8 rounded shadow border border-gray-100 overflow-auto"> 
             <code class="hljs">
 {
+    <span class="hljs-attr">"success"</span>: <span class="hljs-keyword">true</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Se logeo correctamente"</span>,
     <span class="hljs-attr">"token"</span>: <span class="hljs-string">"tu tokken"</span>    
 }
