@@ -40,8 +40,7 @@
         @endcomponent
 
         <x-sub2title>Resultado Json</x-sub2title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
+        
 
         <pre class="text-base w-full bg-white px-8 rounded shadow border border-gray-100 overflow-auto"> 
             <code class="hljs">
@@ -63,20 +62,7 @@
             </code>
         </pre>
 
-        <style>
-            .hljs-attr{
-                color: rgb(16, 146, 127);
-            }
-            .hljs-string{
-                 color: rgb(201, 139, 32);
-            }
-            .hljs-number{
-                color: rgb(67, 151, 224);
-            }
-            .hljs-keyword{
-                color: rgb(238, 97, 78);
-            }
-        </style>
+        
 
         <x-subtitle class="mt-12">Get Distrito específico</x-subtitle>
         Este es el endpoint para Distrito especifico la cual se necesitara cambiar la variable 

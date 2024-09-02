@@ -92,4 +92,21 @@
 
     </div>
 
+    <style>
+            .hljs-attr{
+                color: rgb(16, 146, 127);
+            }
+            .hljs-string{
+                 color: rgb(201, 139, 32);
+            }
+            .hljs-number{
+                color: rgb(67, 151, 224);
+            }
+            .hljs-keyword{
+                color: rgb(238, 97, 78);
+            }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 </x-app-layout>

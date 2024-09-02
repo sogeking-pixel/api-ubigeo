@@ -1,0 +1,1 @@
+<span class="inline-block w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>

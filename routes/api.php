@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('/login',[UserController::class,'login'] );
+Route::post('/login',[UserController::class,'login'] )->name('api.login');
 
 
 

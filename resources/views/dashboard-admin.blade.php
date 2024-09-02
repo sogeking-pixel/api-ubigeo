@@ -24,7 +24,7 @@
             @component('components.cards', [            
             'title' => "Token Activo",
             'data' => [
-                ["token" => $tokens, "name" => "token asdf", "created" => "hoy", "expires" => "ayer"]
+                ["token" => "14|G88Corp2i2otSzoWeLMt6SZgGYod4W7CUjRk2BHCa8a151b1", "name" => "token asdf", "created" => "hoy", "expires" => "ayer"]
             ]])
             @endcomponent
         </div>
