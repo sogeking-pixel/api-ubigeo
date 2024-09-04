@@ -30,13 +30,12 @@
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                    @if (Auth::user()->hasVerifiedEmail())
-                                        <x-point-ok></x-point-ok>
-                                    @else
+                                    @if (! Auth::user()->hasVerifiedEmail())                                      
+                                    
                                         <x-point-disabled></x-point-disabled>
                                     @endif
                                     
-                                    <div class="pl-2">{{ Auth::user()->name }}</div>
+                                    <div class="pl-1">{{ Auth::user()->name }}</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -48,6 +47,9 @@
 
                             <x-slot name="content">
                                 <x-dropdown-link :href="route('profile.edit')">
+                                    @if (! Auth::user()->hasVerifiedEmail())   
+                                        <x-point-disabled></x-point-disabled>
+                                    @endif 
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
 
@@ -80,6 +82,11 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
+                @auth
+                    @if (! Auth::user()->hasVerifiedEmail())   
+                        <x-point-disabled></x-point-disabled>
+                    @endif                        
+                @endauth
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -117,11 +124,17 @@
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="px-4">
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    
                 </div>
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')">
+                    
+                    @if (! Auth::user()->hasVerifiedEmail())   
+                        <x-point-disabled></x-point-disabled>
+                    @endif                        
+                    
+                    
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
