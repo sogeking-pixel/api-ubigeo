@@ -1,7 +1,7 @@
 <x-app-layout>
    <x-slot name="header">
         <div class="flex">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight block">
+            <h2 class="font-semibold text-xl text-gray-600 leading-tight block">
                 {{ __('Documentacion') }}
             </h2>
 

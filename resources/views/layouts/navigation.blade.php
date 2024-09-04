@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('index') }}">
+                        <x-application-logo class="block h-9  fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -26,13 +26,17 @@
                     </x-nav-link>
 
                     @auth
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
+                        
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                    <div>{{ Auth::user()->name }}</div>
+                                    @if (Auth::user()->hasVerifiedEmail())
+                                        <x-point-ok></x-point-ok>
+                                    @else
+                                        <x-point-disabled></x-point-disabled>
+                                    @endif
+                                    
+                                    <div class="pl-2">{{ Auth::user()->name }}</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -66,7 +70,7 @@
                         </x-nav-link-autentication>
 
                         <x-nav-link-autentication :href="route('register')">
-                            {{ __('Sign Up') }}
+                            {{ __('Registrarse') }}
                         </x-nav-link-autentication>
                     @endauth
 
@@ -96,15 +100,13 @@
                 {{ __('Documentacion') }}
             </x-responsive-nav-link>
             @Auth
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link>
+                
             @else
                 <x-responsive-nav-link :href="route('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('register')">
-                    {{ __('Sign Up') }}
+                    {{ __('Registrarse') }}
                 </x-responsive-nav-link>                
             @endauth
             
