@@ -24,14 +24,26 @@
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full text-gray-600" autocomplete="username" :value="old('email', $user->email)" disabled/>
+            <div class="relative">
+                <x-input-label for="email" :value="__('Email')" />
+                <div class="flex items-center">
+                    <i class="fas fa-envelope absolute left-3 text-gray-400 flex">
+                    @if (($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail()))
+                        <x-point-disabled></x-point-disabled>
+                    @else
+                        <x-point-ok></x-point-ok>
+                    @endif
+                    </i> <!-- Ícono de Font Awesome -->
+                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full pl-10 text-gray-600" autocomplete="username" :value="old('email', $user->email)" disabled />
+                </div>
+            </div>
+
+            
             
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        <x-point-disabled></x-point-disabled>
+                    <p class="text-sm mt-2 text-gray-800">                        
                         {{ __('Your email address is unverified.') }}
 
                         <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -44,7 +56,7 @@
                             {{ __('A new verification link has been sent to your email address.') }}
                         </p>
                     @endif
-                </div>
+                </div>            
             @endif
         </div>
 

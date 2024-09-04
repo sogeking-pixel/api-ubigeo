@@ -37,8 +37,15 @@
 
         <x-subtitle> {{ __('Autenticacion Api') }} </x-subtitle>
         Para autenticar una petición, se utiliza un token de acceso. Para ello, se necesita
-        <a href="{{route('register')}}" class="text-indigo-600 hover:text-indigo-800">registrarse</a> y 
-        <a href="#" class="text-indigo-600 hover:text-indigo-800">verificar</a> el correo.
+       
+       @auth
+            <a href="{{ route('profile.edit') }}" class="text-indigo-600 hover:text-indigo-800">verificar</a> 
+        @else
+            <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-800">registrarse</a> y 
+            <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-800">verificar</a>            
+        @endauth
+
+         el correo.
         Cada usuario tiene su propio token para ello necesita logearse en la api. A continuacion,se muestra el endpoint 
         para el inicio de sesión en la API:
 
