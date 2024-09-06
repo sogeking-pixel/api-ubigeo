@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DepartamentoIndexResource;
+use App\Http\Resources\DepartamentoShowResource;
 use App\Models\DepartamentoModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class DepartamentoController extends Controller
     public function index():JsonResponse
     {
        $departamentos = DepartamentoModel::all();
-       return response()->json($departamentos,200);
+       return response()->json(['success'=>true,"data"=>DepartamentoIndexResource::collection($departamentos)],200);
     }
 
     /**
@@ -33,13 +35,13 @@ class DepartamentoController extends Controller
     {
         try {
             $departamento = DepartamentoModel::where('nombre', $name)->firstOrFail();
-            return response()->json(["data"=>$departamento],200);
+            return response()->json(['success'=>true,"data"=>new DepartamentoShowResource($departamento)],200);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
         }
     }
 

@@ -16,19 +16,20 @@ class UserController extends Controller
     {
         $success = Auth::attempt($request->only(['email', 'password']));
         if (!$success) {
-            return response()->json(["message" => "error en credenciales"], 401);
+            return response()->json(['success'=>false,"message" => "error en credenciales"], 401);
         }
         /** @var \App\Models\MyUserModel $user **/
         $user = Auth::user();
         $isEmailVerified = $user->hasVerifiedEmail();
         if (!$isEmailVerified) {
-            return response()->json(["message" => "El correo electrónico no está confirmado"], 401);
+            return response()->json(['success'=>false,"message" => "El correo electrónico no está confirmado"], 401);
         }
 
         $user->tokens()->delete();
         $token = $user->createToken("API TOKEN")->plainTextToken;
         
         return response()->json([
+            'success'=>true,
             'message' => 'Se logeo correctamente',
             "token" => $token
         ], 200);
@@ -46,7 +47,7 @@ class UserController extends Controller
 
         $user->assignRole('client');
 
-        return response()->json(["message" => 'se registro correctamente'], 200);
+        return response()->json(['success'=>true,"message" => 'se registro correctamente'], 200);
     }
 
 

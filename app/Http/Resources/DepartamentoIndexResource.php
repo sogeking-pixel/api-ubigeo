@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DistritoResource extends JsonResource
+class DepartamentoIndexResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,10 @@ class DistritoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'nombre'=> $this->nombre,
+            'link_info' => route('departamentos.show',$this->nombre),
+            'link_provincias' =>route('departamentos.provincias.index',$this->nombre) 
+        ];
     }
 }
