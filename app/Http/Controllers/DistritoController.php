@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DistritoRequest;
+use App\Http\Resources\DistritoIndexResource;
+use App\Http\Resources\DistritoShowResource;
+use App\Http\Resources\ProvinciaIndexResource;
 use App\Models\DepartamentoModel;
 use App\Models\DistritoModel;
 use App\Models\ProvinciaModel;
@@ -28,12 +31,12 @@ class DistritoController extends Controller
             }
             
             $distritos =$provincia->distritos()->get();
-            return response()->json($distritos,200);
+            return response()->json(['success'=>true,'data'=>DistritoIndexResource::collection($distritos)],200);
             
         } catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
         } catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
         }
         
     }
@@ -74,13 +77,13 @@ class DistritoController extends Controller
         
         try {
             $distrito = DistritoModel::where('nombre', $name)->firstOrFail();
-            return response()->json(["data"=>$distrito],200);
+            return response()->json(['success'=>true, "data"=>new DistritoShowResource($distrito)],200);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -100,10 +103,10 @@ class DistritoController extends Controller
             return response()->json(["data"=>$distrito],202);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -118,10 +121,10 @@ class DistritoController extends Controller
             return response()->json(["data"=>$name],200);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
         }
     }
 }

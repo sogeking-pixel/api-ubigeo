@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProvinciaRequest;
+use App\Http\Resources\ProvinciaIndexResource;
+use App\Http\Resources\ProvinciaShowResource;
 use App\Models\DepartamentoModel;
 use App\Models\ProvinciaModel;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +22,11 @@ class provinciaController extends Controller
            
             $provincias = $departamento->provincias()->get(); 
             
-            return response()->json($provincias,200);
+            $provinciasResource = $provincias->map(function ($provincia) use ($departamento_name) {
+                return new ProvinciaIndexResource($provincia, $departamento_name);
+            });
+
+            return response()->json(['success' => true, 'data' => $provinciasResource], 200);
             
         } catch (\Exception $e) {
             return response()->json(['success'=>false,'error' => "No se encontro la informacion"], 404);
@@ -59,7 +65,7 @@ class provinciaController extends Controller
     {
         try {
             $provincia = ProvinciaModel::where('nombre', $name)->firstOrFail();
-            return response()->json(["data"=>$provincia],200);
+            return response()->json(["data"=>new ProvinciaShowResource($provincia)],200);
         }
         catch (\Exception $e) {
             return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);

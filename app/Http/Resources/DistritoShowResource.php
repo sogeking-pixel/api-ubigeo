@@ -14,6 +14,13 @@ class DistritoShowResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'ubigeo'=> $this->ubigeo,
+            'nombre'=> $this->nombre,
+            'poblacion'=> $this->poblacion,
+            'superficie'=> $this->superficie,
+            'x'=> $this->x,
+            'y'=> $this->y            
+        ];
     }
 }
