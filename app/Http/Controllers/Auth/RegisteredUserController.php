@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
 
     public function create_admin(): View
     {
-        return view('auth.register');
+        return view('auth.register-admin');
     }
 
     /**
@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'secret_key' => 'required|string|size:30'
         ]);
-
+        
         if ($request->secret_key !== env('ADMIN_SECRET_KEY')) {
             return redirect()->back()->withErrors(['secret_key' => 'Clave secreta incorrecta']);
         }
