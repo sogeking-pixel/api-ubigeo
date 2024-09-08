@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ProvinciaModel extends Model
 {
     use HasFactory;
-    protected $table = 'provincia'; // Nombre de la tabla
+    protected $table = 'provincias'; // Nombre de la tabla
 
     public $timestamps = false;
 

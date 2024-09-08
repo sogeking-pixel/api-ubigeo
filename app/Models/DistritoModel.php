@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DistritoModel extends Model
 {
     use HasFactory;
-    protected $table = 'distrito'; // Nombre de la tabla
+    protected $table = 'distritos'; // Nombre de la tabla
 
     public $timestamps = false;
 

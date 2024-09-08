@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class DepartamentoModel extends Model
 {
     use HasFactory;
-    protected $table = 'departamento'; // Nombre de la tabla
+    protected $table = 'departamentos'; // Nombre de la tabla
 
     public $timestamps = false;
 
