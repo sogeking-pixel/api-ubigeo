@@ -22,7 +22,7 @@ class UserController extends Controller
         $user = Auth::user();
         $isEmailVerified = $user->hasVerifiedEmail();
         if (!$isEmailVerified) {
-            return response()->json(['success'=>false,"message" => "El correo electrónico no está confirmado"], 401);
+            return response()->json(['success'=>false,"message" => "El correo electrónico no está confirmado"], 403);
         }
 
         $user->tokens()->delete();
