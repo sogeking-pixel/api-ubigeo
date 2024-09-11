@@ -29,9 +29,9 @@ class provinciaController extends Controller
             return response()->json(['success' => true, 'data' => $provinciasResource], 200);
             
         } catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => "No se encontro la informacion"], 404);
+            return response()->json(['success'=>false,'message' => "No se encontro la informacion"], 404);
         } catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
         
     }
@@ -51,9 +51,9 @@ class provinciaController extends Controller
             return response()->json(["created"=>true,"data"=>$provincia,201]);
             
         } catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => "No se encontro la informacion"], 404);
+            return response()->json(['success'=>false,'message' => "No se encontro la informacion"], 404);
         } catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
         
     }
@@ -65,13 +65,13 @@ class provinciaController extends Controller
     {
         try {
             $provincia = ProvinciaModel::where('nombre', $name)->firstOrFail();
-            return response()->json(["data"=>new ProvinciaShowResource($provincia)],200);
+            return response()->json(['success'=>true,"data"=>new ProvinciaShowResource($provincia)],200);
         }
         catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -87,10 +87,10 @@ class provinciaController extends Controller
             return response()->json(['success'=>true,"data"=>$provincia],202);
         }
         catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -105,10 +105,10 @@ class provinciaController extends Controller
             return response()->json(['success'=>true,"message"=>"Se elimino ".$name],200);
         }
         catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 }

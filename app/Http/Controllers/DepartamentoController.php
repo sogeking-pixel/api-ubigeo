@@ -38,10 +38,10 @@ class DepartamentoController extends Controller
             return response()->json(['success'=>true,"data"=>new DepartamentoShowResource($departamento)],200);
         }
         catch (\Exception $e) {
-            return response()->json(['success'=>false,'error' => 'No se encontro la informacion'], 404);
+            return response()->json(['success'=>false,'message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['success'=>false,'error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['success'=>false,'message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -57,10 +57,10 @@ class DepartamentoController extends Controller
             return response()->json(["data"=>$departamento],202);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 
@@ -75,10 +75,10 @@ class DepartamentoController extends Controller
             return response()->json(["data"=>$name],200);
         }
         catch (\Exception $e) {
-            return response()->json(['error' => 'No se encontro la informacion'], 404);
+            return response()->json(['message' => 'No se encontro la informacion'], 404);
         } 
         catch (\Throwable $th) {
-            return response()->json(['error' => 'Ocurrió un error inesperado'], 500);
+            return response()->json(['message' => 'Ocurrió un error inesperado'], 500);
         }
     }
 }
